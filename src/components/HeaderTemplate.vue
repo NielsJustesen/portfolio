@@ -1,10 +1,10 @@
 <template>
   <header class="header">
     <div>
-      <div @click="handleClick(null)" class="hover-pointer tabs-arrows">
+      <!-- <div @click="handleClick(null)" class="hover-pointer tabs-arrows">
         <img v-if="open" src="../assets/svg/OrSign.svg" alt="" />
         <img v-else src="../assets/svg/GreaterThanSign.svg" alt="" />
-      </div>
+      </div> -->
       <div v-if="open" class="tabs-container">
         <ul>
           <li>

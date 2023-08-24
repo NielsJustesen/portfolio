@@ -4,11 +4,16 @@
   z-index: 10;
   display: flex;
   font-size: 1.4em;
-  border: var(--border-w) solid var(--border-color);
+
+  // border: var(--border-w) solid var(--border-color);
+  border-bottom: var(--border-w) solid var(--border-color);
+  box-shadow: 10px 5px 5px whitesmoke;
+  border-radius: 0 0 25px 25px;
   h1 {
     font-family: CyberpunkGrotesque;
     margin: 10px auto;
   }
+  margin-bottom: 2em;
 }
 .tabs-arrows {
   margin: 1em;

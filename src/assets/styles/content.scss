@@ -1,5 +1,5 @@
 :root {
-  --transition-time: 0.5s;
+  --transition-time: 0.7s;
 }
 
 .content-container-list {
@@ -14,36 +14,50 @@
 
 .content-container {
   position: absolute;
-  width: 100%;
+  left: 15%;
+  width: 70%;
   display: flex;
-  transition: transform var(--transition-time) linear,
-    opacity var(--transition-time) linear var(--transition-time);
+  transition: transform var(--transition-time) ease-in,
+    opacity var(--transition-time) ease-in var(--transition-time);
+  border: var(--border-w) solid var(--border-color);
+  height: 590px;
+  border-radius: 25px;
+  box-shadow: 10px 5px 20px whitesmoke, -10px -5px 20px whitesmoke;
 }
 
 .pan-left-content-container {
-  transform: translateX(-40%) rotateY(-80deg);
-  opacity: 0.1;
+  transform: translateX(-60%) rotateY(-80deg);
+  opacity: 0;
+  box-shadow: none;
 }
 
 .pan-right-content-container {
-  transform: translateX(40%) rotateY(80deg);
-  opacity: 0.1;
+  transform: translateX(60%) rotateY(80deg);
+  opacity: 0;
+  box-shadow: none;
 }
 
 .show-content-container {
   transform: translateX(0%) rotateY(0deg);
-  opacity: 1;
+  animation: show var(--transition-time);
 }
 
 .content-info {
   width: 80%;
   margin: 0;
-  padding: 1em;
-  border: var(--border-w) solid var(--border-color);
+  margin: 1em;
 }
 
 .content-images {
-  padding: 1em;
-  border: var(--border-w) solid var(--border-color);
+  margin: 1em;
   width: 20%;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
 }
