@@ -1,0 +1,49 @@
+:root {
+  --transition-time: 0.5s;
+}
+
+.content-container-list {
+  width: 123.75em;
+  background-color: rgba(240, 240, 240, 0.1);
+}
+
+.content-container h2 {
+  font-family: CyberpunkGrotesque;
+  font-size: 3rem;
+}
+
+.content-container {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  transition: transform var(--transition-time) linear,
+    opacity var(--transition-time) linear var(--transition-time);
+}
+
+.pan-left-content-container {
+  transform: translateX(-40%) rotateY(-80deg);
+  opacity: 0.1;
+}
+
+.pan-right-content-container {
+  transform: translateX(40%) rotateY(80deg);
+  opacity: 0.1;
+}
+
+.show-content-container {
+  transform: translateX(0%) rotateY(0deg);
+  opacity: 1;
+}
+
+.content-info {
+  width: 80%;
+  margin: 0;
+  padding: 1em;
+  border: var(--border-w) solid var(--border-color);
+}
+
+.content-images {
+  padding: 1em;
+  border: var(--border-w) solid var(--border-color);
+  width: 20%;
+}

@@ -1,0 +1,39 @@
+/* Header Template */
+.header {
+  height: 4em;
+  z-index: 10;
+  display: flex;
+  font-size: 1.4em;
+  border: var(--border-w) solid var(--border-color);
+  h1 {
+    font-family: CyberpunkGrotesque;
+    margin: 10px auto;
+  }
+}
+.tabs-arrows {
+  margin: 1em;
+}
+
+.tab {
+  padding-right: 1rem;
+}
+.tabs-container {
+  z-index: 20;
+  position: fixed;
+  left: 0;
+  padding: 0 1rem;
+  border: var(--border-w) solid var(--border-color);
+}
+
+.tabs-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.tabs-container ul li {
+  padding: 4px 0 4px 12px;
+  font-size: 2em;
+  a {
+    text-decoration: none;
+  }
+}

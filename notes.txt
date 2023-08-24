@@ -1,0 +1,12 @@
+//Type assertion
+const state = reactive({
+  name: "Link" as string,
+  age: 25 as string | number,
+});
+
+//generic types
+const name = ref("Link");
+const age = ref<number | string>(25); 
+
+//generic type array
+const jobs = ref<Job[]>([])
