@@ -9,13 +9,10 @@
         :headline="content.headline"
         :content="content.content"
         :class="content.class"
+        :images="content.images"
         @changePage="changePage"
       />
     </div>
-    <!-- <div class="navigation">
-      <button @click="changePage('left')">&larr;</button>
-      <button @click="changePage('right')">&rarr;</button>
-    </div> -->
   </div>
 </template>
 
@@ -24,6 +21,7 @@ import { defineComponent, ref } from "vue";
 import HeaderTemplate from "./components/HeaderTemplate.vue";
 import ContentTemplate from "./components/ContentTemplate.vue";
 import Content from "./types/Content";
+import Image from "./types/Image";
 export default defineComponent({
   name: "App",
   components: { HeaderTemplate, ContentTemplate },
@@ -38,6 +36,23 @@ export default defineComponent({
         content:
           "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         class: pageShow.value,
+        images: [
+          {
+            url: "/images/Headshot.png",
+            alt: "",
+            class: "content-image fade-image",
+          },
+          {
+            url: "/images/Niels_Justesen.jpg",
+            alt: "",
+            class: "content-image fade-image",
+          },
+          {
+            url: "/images/SatireJohn.png",
+            alt: "",
+            class: "content-image fade-image",
+          },
+        ] as Image[],
       },
       {
         id: "about",
@@ -45,6 +60,15 @@ export default defineComponent({
         content:
           "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         class: pagePanLeft.value,
+        images: [
+          { url: "/images/Headshot.png", alt: "", class: "content-image" },
+          {
+            url: "/images/Niels_Justesen.jpg",
+            alt: "",
+            class: "content-image",
+          },
+          { url: "/images/SatireJohn.png", alt: "", class: "content-image" },
+        ] as Image[],
       },
       {
         id: "projects",
@@ -52,6 +76,15 @@ export default defineComponent({
         content:
           "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         class: pagePanLeft.value,
+        images: [
+          { url: "/images/Headshot.png", alt: "", class: "content-image" },
+          {
+            url: "/images/Niels_Justesen.jpg",
+            alt: "",
+            class: "content-image",
+          },
+          { url: "/images/SatireJohn.png", alt: "", class: "content-image" },
+        ] as Image[],
       },
       {
         id: "socials",
@@ -59,6 +92,15 @@ export default defineComponent({
         content:
           "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         class: pagePanLeft.value,
+        images: [
+          { url: "/images/Headshot.png", alt: "", class: "content-image" },
+          {
+            url: "/images/Niels_Justesen.jpg",
+            alt: "",
+            class: "content-image",
+          },
+          { url: "/images/SatireJohn.png", alt: "", class: "content-image" },
+        ] as Image[],
       },
     ]);
     const pageView = ref<number>(0);

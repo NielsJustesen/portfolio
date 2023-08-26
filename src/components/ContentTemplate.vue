@@ -5,7 +5,15 @@
         <h2>{{ headline }}</h2>
         <p>{{ content }}</p>
       </div>
-      <div class="content-images">Images</div>
+      <div v-if="imagesList.length > 0" class="content-images">
+        <img
+          v-for="image in imagesList"
+          :key="image.url"
+          :src="image.url"
+          alt="missing_img"
+          :class="image.class"
+        />
+      </div>
     </div>
     <div class="navigation">
       <button class="left-btn" @click="changePage('left')">&larr;</button>
@@ -14,8 +22,8 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
-
+import { defineComponent, PropType, ref } from "vue";
+import Image from "@/types/Image";
 export default defineComponent({
   props: {
     id: {
@@ -31,8 +39,8 @@ export default defineComponent({
       type: String,
     },
     images: {
-      required: false,
-      type: Array,
+      required: true,
+      type: Array as PropType<Image[]>,
     },
     links: {
       required: false,
@@ -40,11 +48,36 @@ export default defineComponent({
     },
   },
   setup(props, { emit }) {
+    const imageIndex = ref<number>(0);
+    const fadeImage = ref<string>("content-image fade-image");
+    const showImage = ref<string>("content-image show-image");
+    const imagesList = ref<Image[]>(props.images);
     const changePage = (dirr: string) => {
       emit("changePage", dirr);
     };
+    const changePicture = () => {
+      if (props.images === undefined) return;
+      if (imageIndex.value >= props.images.length - 1) {
+        imageIndex.value = 0;
+      } else {
+        imageIndex.value++;
+      }
+      imagesList.value.forEach((img) => {
+        img.class = fadeImage.value;
+      });
+      console.log(imageIndex.value);
+      imagesList.value[imageIndex.value].class = showImage.value;
+    };
+    setInterval(() => {
+      changePicture();
+    }, 3000);
+    imagesList.value[0].class = showImage.value;
     return {
+      imagesList,
+      imageIndex,
       changePage,
+      showImage,
+      fadeImage,
     };
   },
 });

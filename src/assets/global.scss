@@ -3,6 +3,7 @@
 @import "./styles/footer.scss";
 @import "./styles/content.scss";
 @import "./styles/buttons.scss";
+@import "./styles/images.scss";
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
 @font-face {
   font-family: CyberpunkGrotesque;
@@ -18,7 +19,7 @@
 }
 
 body {
-  background-color: var(--background-color);
+  background-color: var(--body-color);
   // overflow: hidden;
   width: 100vw;
   font-family: "Open Sans";
