@@ -1,10 +1,16 @@
 <template>
   <div class="content-container" :id="id">
-    <div class="content-info">
-      <h2>{{ headline }}</h2>
-      <p>{{ content }}</p>
+    <div class="content">
+      <div class="content-info">
+        <h2>{{ headline }}</h2>
+        <p>{{ content }}</p>
+      </div>
+      <div class="content-images">Images</div>
     </div>
-    <div class="content-images">Images</div>
+    <div class="navigation">
+      <button class="left-btn" @click="changePage('left')">&larr;</button>
+      <button class="right-btn" @click="changePage('right')">&rarr;</button>
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -33,8 +39,13 @@ export default defineComponent({
       type: Array,
     },
   },
-  setup() {
-    return {};
+  setup(props, { emit }) {
+    const changePage = (dirr: string) => {
+      emit("changePage", dirr);
+    };
+    return {
+      changePage,
+    };
   },
 });
 </script>

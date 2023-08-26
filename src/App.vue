@@ -9,12 +9,13 @@
         :headline="content.headline"
         :content="content.content"
         :class="content.class"
+        @changePage="changePage"
       />
     </div>
-    <div class="navigation">
-      <button @click="changePage('left')">left</button>
-      <button @click="changePage('right')">right</button>
-    </div>
+    <!-- <div class="navigation">
+      <button @click="changePage('left')">&larr;</button>
+      <button @click="changePage('right')">&rarr;</button>
+    </div> -->
   </div>
 </template>
 
