@@ -65,7 +65,6 @@ export default defineComponent({
       imagesList.value.forEach((img) => {
         img.class = fadeImage.value;
       });
-      console.log(imageIndex.value);
       imagesList.value[imageIndex.value].class = showImage.value;
     };
     setInterval(() => {

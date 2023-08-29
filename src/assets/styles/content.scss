@@ -1,5 +1,6 @@
 :root {
-  --transition-time: 0.6s;
+  --transition-time: 0.3s;
+  --rotation: 80deg;
 }
 
 .content-container-list {
@@ -22,9 +23,7 @@
   width: 60%;
   transition: transform var(--transition-time) ease-in,
     opacity var(--transition-time) ease-in var(--transition-time);
-  border: var(--border-w) solid var(--border-color);
   border-radius: 5px;
-  box-shadow: 10px 5px 20px whitesmoke;
 
   .navigation {
     z-index: 20;
@@ -60,7 +59,7 @@
 
 .pan-left-content-container {
   transform: translateX(-60%) rotateY(-80deg);
-  opacity: 0;
+  opacity: 0.1;
   box-shadow: none;
   transition: transform var(--transition-time) ease-in,
     opacity var(--transition-time) ease-in var(--transition-time);
@@ -68,7 +67,7 @@
 
 .pan-right-content-container {
   transform: translateX(60%) rotateY(80deg);
-  opacity: 0;
+  opacity: 0.1;
   box-shadow: none;
   transition: transform var(--transition-time) ease-in,
     opacity var(--transition-time) ease-in var(--transition-time);
