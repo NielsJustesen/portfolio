@@ -50,7 +50,7 @@ export default defineComponent({
       if (iterations.value >= originalName.value.length) {
         clearInterval(interval);
       }
-      iterations.value += 1 / 3;
+      iterations.value += 1 / 4;
     }, 30);
     const handleClick = (index: any) => {
       open.value = !open.value;
