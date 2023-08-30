@@ -10,6 +10,7 @@
         :content="content.content"
         :class="content.class"
         :images="content.images"
+        :fullContent="content"
         @changePage="changePage"
       />
     </div>

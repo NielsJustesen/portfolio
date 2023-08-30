@@ -3,7 +3,9 @@
     <div class="content">
       <div class="content-info">
         <h2>{{ headline }}</h2>
-        <p>{{ content }}</p>
+        <div class="content-content">
+          <p :class="showContent">{{ content }}</p>
+        </div>
       </div>
       <div v-if="imagesList.length > 0" class="content-images">
         <img
@@ -22,8 +24,9 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, PropType, ref } from "vue";
+import { computed, defineComponent, PropType, ref } from "vue";
 import Image from "@/types/Image";
+import Content from "@/types/Content";
 export default defineComponent({
   props: {
     id: {
@@ -41,6 +44,10 @@ export default defineComponent({
     images: {
       required: true,
       type: Array as PropType<Image[]>,
+    },
+    fullContent: {
+      required: true,
+      type: Object as PropType<Content>,
     },
     links: {
       required: false,
@@ -67,11 +74,21 @@ export default defineComponent({
       });
       imagesList.value[imageIndex.value].class = showImage.value;
     };
+
+    const showContent = computed(() => {
+      if (props.fullContent.class === "show-content-container") {
+        return "content-content-show";
+      } else {
+        return "content-content-hide";
+      }
+    });
+
     setInterval(() => {
       changePicture();
     }, 3000);
     imagesList.value[0].class = showImage.value;
     return {
+      showContent,
       imagesList,
       imageIndex,
       changePage,
