@@ -33,11 +33,13 @@
     margin-top: 2em;
     margin-bottom: 1em;
     button {
+      background-color: rgb(227, 0, 193);
+      box-shadow: rgb(163, 0, 139) 0px 6px 10px -1px;
+      border: 0;
       z-index: 10;
       border-radius: 5px;
-      width: 4em;
-      height: 3em;
-      background-color: var(--background-color);
+      font-size: 2rem;
+      padding: 0 0.5em 0 0.5em;
     }
     button:hover {
       cursor: pointer;

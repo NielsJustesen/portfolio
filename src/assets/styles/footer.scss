@@ -1,6 +1,8 @@
 .footer {
-  position: sticky;
-  height: 5vh;
+  position: fixed;
+  display: flex;
+  padding: 1em;
+  width: 100%;
   bottom: 0;
-  border: var(--border-w) solid var(--border-color);
+  background-color: var(--card-color);
 }

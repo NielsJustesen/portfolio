@@ -15,17 +15,19 @@
       />
     </div>
   </div>
+  <FooterTemplate />
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import HeaderTemplate from "./components/HeaderTemplate.vue";
 import ContentTemplate from "./components/ContentTemplate.vue";
+import FooterTemplate from "./components/FooterTemplate.vue";
 import Content from "./types/Content";
 import Image from "./types/Image";
 export default defineComponent({
   name: "App",
-  components: { HeaderTemplate, ContentTemplate },
+  components: { HeaderTemplate, ContentTemplate, FooterTemplate },
   setup() {
     const pageShow = ref<string>("show-content-container");
     const pagePanLeft = ref<string>("pan-left-content-container");

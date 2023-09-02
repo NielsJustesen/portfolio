@@ -3,26 +3,13 @@
   background-color: var(--card-color);
   z-index: 10;
   display: flex;
-  // border: var(--border-w) solid var(--border-color);
-  border-bottom: var(--border-w) solid whitesmoke;
   font-size: 2em;
   h1 {
-    position: relative;
     font-family: "Space Mono", monospace;
-    color: rgb(20, 20, 20);
+    color: var(--background-color);
     margin: 0.2em auto;
     padding: 0.1em 1em 0.1em 0.3em;
     background-color: whitesmoke;
-    // border-radius: 0 0 0.5em;
-    // .corner {
-    //   position: absolute;
-    //   bottom: -14px;
-    //   right: 2px;
-    //   transform: rotateZ(45deg);
-    //   background-color: var(--card-color);
-    //   width: 17px;
-    //   height: 56px;
-    // }
   }
   margin-bottom: 1em;
 }

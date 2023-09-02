@@ -18,8 +18,8 @@
       </div>
     </div>
     <div class="navigation">
-      <button class="left-btn" @click="changePage('left')">&larr;</button>
-      <button class="right-btn" @click="changePage('right')">&rarr;</button>
+      <button class="left-btn" @click="changePage('left')">&lt;</button>
+      <button class="right-btn" @click="changePage('right')">></button>
     </div>
   </div>
 </template>
