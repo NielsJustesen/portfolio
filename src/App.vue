@@ -88,6 +88,22 @@ export default defineComponent({
         ] as Image[],
       },
       {
+        id: "skills",
+        headline: "Skills",
+        content:
+          "Here is a list of the skills I use in my daily life as a Web Developer",
+        class: pagePanLeft.value,
+        images: [
+          { url: "/images/Headshot.png", alt: "", class: "content-image" },
+          {
+            url: "/images/Niels_Justesen.jpg",
+            alt: "",
+            class: "content-image",
+          },
+          { url: "/images/SatireJohn.png", alt: "", class: "content-image" },
+        ] as Image[],
+      },
+      {
         id: "socials",
         headline: "Socials",
         content:

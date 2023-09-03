@@ -12,9 +12,11 @@ import { defineComponent, ref } from "vue";
 export default defineComponent({
   setup(props, ctx) {
     const open = ref<boolean>(false);
-    const originalName = ref<string>("NIELS JUSTESEN");
-    const name = ref<string>("NIELS JUSTESEN");
-    const letters = ref<string>("ABCDEFGHIJKLMNOPQRSTUVXYZÆØÅ");
+    const originalName = ref<string>("Full Stack Web Developer");
+    const name = ref<string>("Full Stack Web Developer");
+    const letters = ref<string>(
+      "ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvxyz"
+    );
     const iterations = ref<number>(0);
 
     const interval = setInterval(() => {
@@ -32,7 +34,7 @@ export default defineComponent({
       if (iterations.value >= originalName.value.length) {
         clearInterval(interval);
       }
-      iterations.value += 1 / 4;
+      iterations.value += 1 / 2;
     }, 30);
     const handleClick = (index: any) => {
       open.value = !open.value;

@@ -1,0 +1,4 @@
+Display skills: 
+ programming languages with each its own page, that explains your knowlegde of the skill
+ The page is opened from a learn more bottun, which scrolls down to the page right below.
+ the page has a go back button, so it will scroll back up to the over view.

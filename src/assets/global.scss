@@ -22,7 +22,9 @@ body {
   background-color: var(--body-color);
   font-family: "Open Sans";
 }
-
+p {
+  font-size: 1.2em;
+}
 .hover-pointer {
   cursor: pointer;
 }

@@ -5,6 +5,28 @@
         <h2>{{ headline }}</h2>
         <div class="content-content">
           <p :class="showContent">{{ content }}</p>
+          <div :class="showContent">
+            <table v-if="id == 'skills'" class="skill-table">
+              <tr>
+                <td>HTML5</td>
+                <td>CSS3/Sass</td>
+                <td>TypeScript</td>
+                <td>Vue js</td>
+              </tr>
+              <tr>
+                <td>Php</td>
+                <td>RESTful API</td>
+                <td>SQL DBs</td>
+                <td>Database Design</td>
+              </tr>
+              <tr>
+                <td>Unit Testing</td>
+                <td>E2E Testing</td>
+                <td>SCRUM</td>
+                <td>Git</td>
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
       <div v-if="imagesList.length > 0" class="content-images">
