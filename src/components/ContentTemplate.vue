@@ -18,8 +18,20 @@
       </div>
     </div>
     <div class="navigation">
-      <button class="left-btn" @click="changePage('left')">&lt;</button>
-      <button class="right-btn" @click="changePage('right')">></button>
+      <button
+        :disabled="fullContent.class !== 'show-content-container'"
+        class="left-btn"
+        @click="changePage('left')"
+      >
+        &lt;
+      </button>
+      <button
+        :disabled="fullContent.class !== 'show-content-container'"
+        class="right-btn"
+        @click="changePage('right')"
+      >
+        >
+      </button>
     </div>
   </div>
 </template>

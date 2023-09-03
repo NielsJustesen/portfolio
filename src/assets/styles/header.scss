@@ -3,7 +3,8 @@
   background-color: var(--card-color);
   z-index: 10;
   display: flex;
-  font-size: 2em;
+  font-size: clamp(1rem, 2vw, 3rem);
+  pointer-events: none;
   h1 {
     font-family: "Space Mono", monospace;
     color: var(--background-color);
@@ -12,31 +13,4 @@
     background-color: whitesmoke;
   }
   margin-bottom: 1em;
-}
-.tabs-arrows {
-  margin: 1em;
-}
-
-.tab {
-  padding-right: 1rem;
-}
-.tabs-container {
-  z-index: 20;
-  position: fixed;
-  left: 0;
-  padding: 0 1rem;
-  border: var(--border-w) solid var(--border-color);
-}
-
-.tabs-container ul {
-  list-style: none;
-  padding: 0;
-}
-
-.tabs-container ul li {
-  padding: 4px 0 4px 12px;
-  font-size: 2em;
-  a {
-    text-decoration: none;
-  }
 }

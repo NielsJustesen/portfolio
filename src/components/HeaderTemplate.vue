@@ -1,23 +1,5 @@
 <template>
   <header class="header">
-    <div>
-      <div v-if="open" class="tabs-container">
-        <ul>
-          <li>
-            <p @click="handleClick(0)" class="hover-pointer">Home</p>
-          </li>
-          <li>
-            <p @click="handleClick(1)" class="hover-pointer">About</p>
-          </li>
-          <li>
-            <p @click="handleClick(2)" class="hover-pointer">Projects</p>
-          </li>
-          <li>
-            <p @click="handleClick(3)" class="hover-pointer">Socials</p>
-          </li>
-        </ul>
-      </div>
-    </div>
     <h1>
       <div class="corner"></div>
       {{ name }}
