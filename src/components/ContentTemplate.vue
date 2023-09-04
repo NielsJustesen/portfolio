@@ -1,40 +1,50 @@
 <template>
   <div class="content-container" :id="id">
+    <h2 class="content-headline">{{ headline }}</h2>
     <div class="content">
       <div class="content-info">
-        <h2>{{ headline }}</h2>
         <div class="content-content">
           <p :class="showContent">{{ content }}</p>
           <div :class="showContent">
-            <table v-if="id == 'skills'" class="skill-table">
-              <tr>
-                <td>HTML5</td>
-                <td>CSS3/Sass</td>
-                <td>TypeScript</td>
-                <td>Vue js</td>
-              </tr>
-              <tr>
-                <td>Php</td>
-                <td>RESTful API</td>
-                <td>SQL DBs</td>
-                <td>Database Design</td>
-              </tr>
-              <tr>
-                <td>Unit Testing</td>
-                <td>E2E Testing</td>
-                <td>SCRUM</td>
-                <td>Git</td>
-              </tr>
-            </table>
+            <div>
+              <p>Click one to learn more about my experience</p>
+
+              <table v-if="id == 'skills'" class="skill-table">
+                <tr>
+                  <td @click="clickSkill('HTML5')">HTML5</td>
+                  <td @click="clickSkill('CSS3')">CSS3/Sass</td>
+                  <td @click="clickSkill('TypeScript')">TypeScript</td>
+                  <td @click="clickSkill('Vue')">Vue js</td>
+                </tr>
+                <tr>
+                  <td @click="clickSkill('Php')">Php</td>
+                  <td @click="clickSkill('API')">RESTful API</td>
+                  <td @click="clickSkill('SQL')">SQL DBs</td>
+                  <td @click="clickSkill('DBDesign')">Database Design</td>
+                </tr>
+                <tr>
+                  <td @click="clickSkill('Unit')">Unit Testing</td>
+                  <td @click="clickSkill('E2E')">E2E Testing</td>
+                  <td @click="clickSkill('SCRUM')">SCRUM</td>
+                  <td @click="clickSkill('Git')">Git</td>
+                </tr>
+              </table>
+            </div>
           </div>
         </div>
       </div>
-      <div v-if="imagesList.length > 0" class="content-images">
+      <div
+        v-if="
+          imagesList.length > 0 &&
+          fullContent.class === 'show-content-container'
+        "
+        class="content-images"
+      >
         <img
           v-for="image in imagesList"
           :key="image.url"
           :src="image.url"
-          alt="missing_img"
+          :alt="image.url"
           :class="image.class"
         />
       </div>
@@ -111,9 +121,9 @@ export default defineComponent({
 
     const showContent = computed(() => {
       if (props.fullContent.class === "show-content-container") {
-        return "content-content-show";
+        return "content-show";
       } else {
-        return "content-content-hide";
+        return "content-hide";
       }
     });
 
@@ -121,6 +131,12 @@ export default defineComponent({
       changePicture();
     }, 3000);
     imagesList.value[0].class = showImage.value;
+
+    const clickSkill = (skill: string) => {
+      emit("showSkill", skill);
+      skill = skill.toLowerCase();
+      console.log(skill);
+    };
     return {
       showContent,
       imagesList,
@@ -128,6 +144,7 @@ export default defineComponent({
       changePage,
       showImage,
       fadeImage,
+      clickSkill,
     };
   },
 });

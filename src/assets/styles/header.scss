@@ -1,16 +1,17 @@
 /* Header Template */
 .header {
-  background-color: var(--card-color);
-  z-index: 10;
+  background-color: var(--background-color-black);
+  z-index: 100;
   display: flex;
   font-size: clamp(1rem, 2vw, 2rem);
   pointer-events: none;
   h1 {
+    z-index: 100;
     font-family: "Space Mono", monospace;
-    color: var(--background-color);
+    color: var(--background-color-black);
     margin: 0.2em auto;
     padding: 0.1em 1em 0.1em 0.3em;
-    background-color: whitesmoke;
+    background-color: var(--background-color-white);
   }
   margin-bottom: 1em;
 }

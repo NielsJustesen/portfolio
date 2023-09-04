@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <HeaderTemplate />
-    <div class="content-container-list">
+    <div class="content-container-list" :class="containerClass">
       <ContentTemplate
         v-for="content in contentList"
         :key="content.id"
@@ -12,6 +12,7 @@
         :images="content.images"
         :fullContent="content"
         @changePage="changePage"
+        @showSkill="showSkill"
       />
     </div>
   </div>
@@ -30,6 +31,7 @@ export default defineComponent({
     const pageShow = ref<string>("show-content-container");
     const pagePanLeft = ref<string>("pan-left-content-container");
     const pagePanRight = ref<string>("pan-right-content-container");
+    const containerClass = ref<string>("");
     const contentList = ref<Content[]>([
       {
         id: "home",
@@ -91,16 +93,69 @@ export default defineComponent({
         id: "skills",
         headline: "Skills",
         content:
-          "Here is a list of the skills I use in my daily life as a Web Developer",
+          "Here is a list of the skills I use in my daily life as a Web Developer.",
         class: pagePanLeft.value,
         images: [
-          { url: "/images/Headshot.png", alt: "", class: "content-image" },
           {
-            url: "/images/Niels_Justesen.jpg",
+            url: "/images/Logos/TypescriptLogo.png",
             alt: "",
             class: "content-image",
           },
-          { url: "/images/SatireJohn.png", alt: "", class: "content-image" },
+          {
+            url: "/images/Logos/vuejsLogo.png",
+            alt: "",
+            class: "content-image",
+          },
+          {
+            url: "/images/Logos/html5Logo.png",
+            alt: "",
+            class: "content-image",
+          },
+          {
+            url: "/images/Logos/CSS3Logo.png",
+            alt: "",
+            class: "content-image",
+          },
+          {
+            url: "/images/Logos/JavaScriptLogo.png",
+            alt: "",
+            class: "content-image",
+          },
+          {
+            url: "/images/Logos/mysqlLogo.png",
+            alt: "",
+            class: "content-image",
+          },
+          {
+            url: "/images/Logos/ScrumLogo.jpg",
+            alt: "",
+            class: "content-image",
+          },
+          {
+            url: "/images/Logos/PHPLogo.png",
+            alt: "",
+            class: "content-image",
+          },
+          {
+            url: "/images/Logos/restfulapiLogo.png",
+            alt: "",
+            class: "content-image",
+          },
+          {
+            url: "/images/Logos/GitLogo.png",
+            alt: "",
+            class: "content-image",
+          },
+          {
+            url: "/images/Logos/PostgreSqlLogo.png",
+            alt: "",
+            class: "content-image",
+          },
+          {
+            url: "/images/Logos/sqliteLogo.jpg",
+            alt: "",
+            class: "content-image",
+          },
         ] as Image[],
       },
       {
@@ -152,6 +207,10 @@ export default defineComponent({
         contentList.value[pageView.value + 1].class = pagePanLeft.value;
       }
     };
+    const showSkill = (skill: string) => {
+      console.log(skill);
+      containerClass.value = "pan-up-content-container";
+    };
     return {
       pageView,
       pageShow,
@@ -159,6 +218,8 @@ export default defineComponent({
       pagePanRight,
       contentList,
       changePage,
+      showSkill,
+      containerClass,
     };
   },
 });
