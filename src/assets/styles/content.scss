@@ -1,6 +1,8 @@
 :root {
   --transition-time: 0.3s;
+  --skill-display-time: 0.7s;
   --rotation: 80deg;
+  --y-offset: -2000px;
 }
 
 .content-container-list {
@@ -9,17 +11,36 @@
 }
 
 .pan-up-content-container {
-  z-index: -200;
-  animation: panUpAndOut 1s forwards;
+  animation: panUpAndOut var(--skill-display-time) forwards;
+}
+
+.pan-down-content-container {
+  animation: panDown var(--skill-display-time) forwards;
+}
+
+@keyframes panDown {
+  0% {
+    z-index: -200;
+    transform: translateY(var(--y-offset));
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
 }
 
 @keyframes panUpAndOut {
   0% {
+    z-index: -200;
     transform: translateY(0px);
+    opacity: 1;
   }
 
   100% {
-    transform: translateY(-1000px);
+    transform: translateY(var(--y-offset));
+    opacity: 0;
   }
 }
 
@@ -29,6 +50,12 @@
   font-family: CyberpunkGrotesque;
   font-size: 3rem;
 }
+
+.content {
+  display: flex;
+  width: 100%;
+}
+
 .content-container {
   max-width: 100%;
   position: absolute;
@@ -36,9 +63,12 @@
     opacity var(--transition-time) ease-in;
   display: flex;
   flex-wrap: wrap;
-  background: radial-gradient(rgba(255, 255, 255, 0.2) 8%, transparent 8%);
+  background: radial-gradient(
+    rgba(255, 255, 255, 0.2) 0.1em,
+    transparent 0.1em
+  );
   background-position: 0% 0%;
-  background-size: 3vmin 3vmin;
+  background-size: 2em 2em;
   background-color: var(--background-color-black);
   border-radius: 5px;
   width: 70em;
@@ -127,10 +157,6 @@
   opacity: 0;
   animation: show-content var(--transition-time) ease-in forwards 0.2s;
 }
-.content {
-  display: flex;
-  width: 100%;
-}
 
 .pan-left-content-container {
   transform: translateX(-60%) rotateY(-80deg);
@@ -142,12 +168,6 @@
   transform: translateX(60%) rotateY(80deg);
   opacity: 0.1;
   animation: hide-20;
-}
-
-.show-content-container {
-  z-index: 10;
-  transform: translateX(0%) rotateY(0deg);
-  animation: show 0s;
 }
 
 .skill-table {
@@ -165,6 +185,65 @@
       background-color: var(--background-color-white);
       color: var(--text-color-black);
     }
+  }
+}
+
+.skill-container {
+  display: flex;
+  justify-content: center;
+
+  .skill-showcase {
+    z-index: 300;
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    background: radial-gradient(
+      rgba(255, 255, 255, 0.2) 0.1em,
+      transparent 0.1em
+    );
+    background-position: 0% 0%;
+    background-size: 2em 2em;
+    background-color: var(--background-color-black);
+    border-radius: 5px;
+    width: 70em;
+    button {
+      background-color: red;
+    }
+    button:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.hide-skill {
+  animation: hideSkill var(--skill-display-time) ease-in-out forwards;
+}
+
+.show-skill {
+  animation: showSkill var(--skill-display-time) ease-in-out forwards;
+}
+
+@keyframes showSkill {
+  0% {
+    transform: translateY(2000px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes hideSkill {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    display: none;
+  }
+  100% {
+    transform: translateY(2000px);
+    display: none;
   }
 }
 

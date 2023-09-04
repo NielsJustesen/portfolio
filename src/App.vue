@@ -16,6 +16,15 @@
       />
     </div>
   </div>
+  <div
+    class="skill-container"
+    :class="shouldShowSkill === true ? 'show-skill' : 'hide-skill'"
+  >
+    <SkillShowcase
+      :skillToShow="skillToShow"
+      @StopShowcase="showSkill('stop')"
+    />
+  </div>
 </template>
 
 <script lang="ts">
@@ -24,77 +33,25 @@ import HeaderTemplate from "./components/HeaderTemplate.vue";
 import ContentTemplate from "./components/ContentTemplate.vue";
 import Content from "./types/Content";
 import Image from "./types/Image";
+import SkillShowcase from "./components/SkillShowcase.vue";
+
 export default defineComponent({
   name: "App",
-  components: { HeaderTemplate, ContentTemplate },
+  components: { HeaderTemplate, ContentTemplate, SkillShowcase },
   setup() {
     const pageShow = ref<string>("show-content-container");
+    const skillToShow = ref<string>("");
+    const shouldShowSkill = ref<boolean>(false);
     const pagePanLeft = ref<string>("pan-left-content-container");
     const pagePanRight = ref<string>("pan-right-content-container");
     const containerClass = ref<string>("");
     const contentList = ref<Content[]>([
       {
-        id: "home",
-        headline: "Home",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        class: pageShow.value,
-        images: [
-          {
-            url: "/images/Headshot.png",
-            alt: "",
-            class: "content-image fade-image",
-          },
-          {
-            url: "/images/Niels_Justesen.jpg",
-            alt: "",
-            class: "content-image fade-image",
-          },
-          {
-            url: "/images/SatireJohn.png",
-            alt: "",
-            class: "content-image fade-image",
-          },
-        ] as Image[],
-      },
-      {
-        id: "about",
-        headline: "About",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        class: pagePanLeft.value,
-        images: [
-          { url: "/images/Headshot.png", alt: "", class: "content-image" },
-          {
-            url: "/images/Niels_Justesen.jpg",
-            alt: "",
-            class: "content-image",
-          },
-          { url: "/images/SatireJohn.png", alt: "", class: "content-image" },
-        ] as Image[],
-      },
-      {
-        id: "projects",
-        headline: "Projects",
-        content:
-          "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        class: pagePanLeft.value,
-        images: [
-          { url: "/images/Headshot.png", alt: "", class: "content-image" },
-          {
-            url: "/images/Niels_Justesen.jpg",
-            alt: "",
-            class: "content-image",
-          },
-          { url: "/images/SatireJohn.png", alt: "", class: "content-image" },
-        ] as Image[],
-      },
-      {
         id: "skills",
         headline: "Skills",
         content:
           "Here is a list of the skills I use in my daily life as a Web Developer.",
-        class: pagePanLeft.value,
+        class: pageShow.value,
         images: [
           {
             url: "/images/Logos/TypescriptLogo.png",
@@ -159,6 +116,63 @@ export default defineComponent({
         ] as Image[],
       },
       {
+        id: "home",
+        headline: "Home",
+        content:
+          "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        class: pagePanLeft.value,
+        images: [
+          {
+            url: "/images/Headshot.png",
+            alt: "",
+            class: "content-image fade-image",
+          },
+          {
+            url: "/images/Niels_Justesen.jpg",
+            alt: "",
+            class: "content-image fade-image",
+          },
+          {
+            url: "/images/SatireJohn.png",
+            alt: "",
+            class: "content-image fade-image",
+          },
+        ] as Image[],
+      },
+      {
+        id: "about",
+        headline: "About",
+        content:
+          "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        class: pagePanLeft.value,
+        images: [
+          { url: "/images/Headshot.png", alt: "", class: "content-image" },
+          {
+            url: "/images/Niels_Justesen.jpg",
+            alt: "",
+            class: "content-image",
+          },
+          { url: "/images/SatireJohn.png", alt: "", class: "content-image" },
+        ] as Image[],
+      },
+      {
+        id: "projects",
+        headline: "Projects",
+        content:
+          "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        class: pagePanLeft.value,
+        images: [
+          { url: "/images/Headshot.png", alt: "", class: "content-image" },
+          {
+            url: "/images/Niels_Justesen.jpg",
+            alt: "",
+            class: "content-image",
+          },
+          { url: "/images/SatireJohn.png", alt: "", class: "content-image" },
+        ] as Image[],
+      },
+
+      {
         id: "socials",
         headline: "Socials",
         content:
@@ -209,10 +223,18 @@ export default defineComponent({
     };
     const showSkill = (skill: string) => {
       console.log(skill);
+      skillToShow.value = skill;
+      shouldShowSkill.value = true;
       containerClass.value = "pan-up-content-container";
+      if (skill === "stop") {
+        containerClass.value = "pan-down-content-container";
+        shouldShowSkill.value = false;
+      }
     };
     return {
       pageView,
+      skillToShow,
+      shouldShowSkill,
       pageShow,
       pagePanLeft,
       pagePanRight,

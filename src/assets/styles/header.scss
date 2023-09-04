@@ -1,6 +1,7 @@
 /* Header Template */
 .header {
   background-color: var(--background-color-black);
+  position: relative;
   z-index: 100;
   display: flex;
   font-size: clamp(1rem, 2vw, 2rem);
