@@ -107,6 +107,7 @@ export default defineComponent({
       emit("changePage", dirr);
     };
     const changePicture = () => {
+      console.log("wut");
       if (props.images === undefined) return;
       if (imageIndex.value >= props.images.length - 1) {
         imageIndex.value = 0;
