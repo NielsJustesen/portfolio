@@ -133,9 +133,8 @@ export default defineComponent({
     imagesList.value[0].class = showImage.value;
 
     const clickSkill = (skill: string) => {
-      emit("showSkill", skill);
       skill = skill.toLowerCase();
-      console.log(skill);
+      emit("showSkill", skill);
     };
     return {
       showContent,
