@@ -1,6 +1,5 @@
 <template>
   <div class="skill-showcase">
-    test
     <button @click="handleClick()">Go back</button>
   </div>
 </template>

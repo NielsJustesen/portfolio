@@ -3,6 +3,8 @@
   --skill-display-time: 0.7s;
   --rotation: 80deg;
   --y-offset: -2000px;
+  --hide-ease: cubic-bezier(0.53, 0.01, 0.75, 0.48);
+  --show-ease: cubic-bezier(0.81, 0.26, 0.53, 0.99);
 }
 
 .content-container-list {
@@ -11,11 +13,11 @@
 }
 
 .pan-up-content-container {
-  animation: panUpAndOut var(--skill-display-time) forwards;
+  animation: panUpAndOut var(--skill-display-time) var(--show-ease) forwards;
 }
 
 .pan-down-content-container {
-  animation: panDown var(--skill-display-time) forwards;
+  animation: panDown var(--skill-display-time) var(--hide-ease) forwards;
 }
 
 @keyframes panDown {
@@ -191,7 +193,7 @@
 .skill-container {
   display: flex;
   justify-content: center;
-
+  transform: translateY(2000px);
   .skill-showcase {
     z-index: 300;
     position: absolute;
@@ -216,33 +218,50 @@
 }
 
 .hide-skill {
-  animation: hideSkill var(--skill-display-time) ease-in-out forwards;
+  animation: hideSkill var(--skill-display-time) var(--hide-ease) forwards;
+  position: relative;
+
+  z-index: -20;
 }
 
 .show-skill {
-  animation: showSkill var(--skill-display-time) ease-in-out forwards;
+  animation: showSkill var(--skill-display-time) var(--show-ease) forwards;
 }
 
 @keyframes showSkill {
   0% {
-    transform: translateY(2000px);
+    transform: translateY(4000px);
+    opacity: 1;
   }
 
   100% {
     transform: translateY(0px);
+    opacity: 1;
   }
 }
 
 @keyframes hideSkill {
   0% {
     transform: translateY(0px);
+    opacity: 1;
   }
 
-  50% {
+  10% {
+    opacity: 0.6;
+  }
+
+  20% {
+    opacity: 0.3;
+  }
+
+  30% {
+    opacity: 0;
     display: none;
   }
+
   100% {
-    transform: translateY(2000px);
+    transform: translateY(4000px);
+    opacity: 0;
     display: none;
   }
 }

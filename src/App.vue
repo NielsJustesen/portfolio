@@ -109,7 +109,7 @@ export default defineComponent({
             class: "content-image",
           },
           {
-            url: "/images/Logos/sqliteLogo.jpg",
+            url: "/images/Logos/sqliteLogo.png",
             alt: "",
             class: "content-image",
           },
